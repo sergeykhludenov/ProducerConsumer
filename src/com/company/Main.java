@@ -26,8 +26,8 @@ public class Main {
 
         BlockingQueue queue = new LinkedBlockingQueue<>(20);
 
-        String poison = "";
-        new Thread(new ProducerPoison(queue, poison)).start();
+        String poison = "STOP";
+        new Thread(new ProducerPoison(queue, poison, list)).start();
         new Thread(new ConsumerPoison(queue, poison)).start();
 
 

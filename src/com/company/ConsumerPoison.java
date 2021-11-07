@@ -15,7 +15,7 @@ public class ConsumerPoison implements Runnable {
                 String take = (String) queue.take();
                 process(take);
 
-// если это ядовитая таблетка, ломайся, выходи
+                // если это ядовитая таблетка, ломайся, выходи
                 if (take == POISON) {
                     break;
                 }

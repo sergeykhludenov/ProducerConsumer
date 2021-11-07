@@ -11,6 +11,17 @@ public class ProducerPoison implements Runnable {
 
     private final BlockingQueue queue;
     private final String POISON;
+    private ArrayList<String> list;
+
+    ProducerPoison(
+            BlockingQueue queue,
+            String POISON,
+            ArrayList<String> list
+    ) {
+        this.queue = queue;
+        this.POISON = POISON;
+        this.list = list;
+    }
 
     @Override
     public void run() {
@@ -36,7 +47,6 @@ public class ProducerPoison implements Runnable {
         // Поместить элементы в очередь
         Pattern pattern = Pattern.compile("страдание", Pattern.CASE_INSENSITIVE);
         String word = null;
-        ArrayList<String> list = new ArrayList<>();
         for (String s : list) {
             Matcher matcher = pattern.matcher(s);
             while (matcher.find()) {
@@ -46,11 +56,6 @@ public class ProducerPoison implements Runnable {
             }
         }
 
-    }
-
-    public ProducerPoison(BlockingQueue queue, String POISON) {
-        this.queue = queue;
-        this.POISON = POISON;
     }
 
 
